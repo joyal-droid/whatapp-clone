@@ -1,0 +1,94 @@
+<!doctype html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+
+</head>
+
+<body>
+    <style>
+        body {
+            text-align: center;
+            font-family: helvetica;
+        }
+
+        input {
+            position: fixed;
+            bottom: 50px;
+            left: 0%;
+            width: 100%;
+            background-color: black;
+            padding: 10px;
+            font-size: 20px;
+            color: deeppink;
+        }
+
+        button {
+            position: fixed;
+            bottom: 0;
+            left: 0%;
+            width: 100%;
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+            background-color: deeppink;
+        }
+    </style>
+    <div>
+        <h1>Simple Chat app</h1>
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyCGWaPlUm7BLHW2-oBK5TqsggYP6Tjc4S8",
+                authDomain: "chat-app-72bc1.firebaseapp.com",
+                databaseURL: "https://chat-app-72bc1.firebaseio.com",
+                projectId: "chat-app-72bc1",
+                storageBucket: "chat-app-72bc1.appspot.com",
+                messagingSenderId: "580613664072",
+                appId: "1:580613664072:web:fe583ee5020b058b1fd77d",
+                measurementId: "G-Z908EHYMWB"
+            };
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+            const DB = firebase.database().ref("chats/");
+            var messages = [];
+            DB.on("value", (snapshot) => {
+                snapshot.forEach((child) => {
+                    var message = child.val();
+                    messages.push({
+                        text: message.text,
+                    });
+                })
+                var a = 0;
+                for (var i in messages) {
+                    var h = document.createElement("H3");
+                    var t = document.createTextNode(messages[a].text);
+                    h.appendChild(t);
+                    h.style.color = "deeppink";
+                    document.getElementById('container').appendChild(h);
+                    a = a + 1
+                }
+            })
+            send = () => {
+                const text = document.getElementById("text").value;
+                document.getElementById("text").value = "";
+                firebase
+                    .database()
+                    .ref("chats/")
+                    .push({
+                        text: text,
+                    }).then(() => { location.reload() })
+            }
+        </script>
+        <div id="container">
+        </div>
+        <div>
+            <input placeholder="I can send your text." type="text" id="text" />
+            <button onclick='send()'>Send</button>
+        </div>
+    </div>
+</body>
+
+</html>

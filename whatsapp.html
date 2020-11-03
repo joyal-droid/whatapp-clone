@@ -1,0 +1,69 @@
+<!doctype html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+<link rel="stylesheet"href="chat.css">
+</head>
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyCGWaPlUm7BLHW2-oBK5TqsggYP6Tjc4S8",
+                authDomain: "chat-app-72bc1.firebaseapp.com",
+                databaseURL: "https://chat-app-72bc1.firebaseio.com",
+                projectId: "chat-app-72bc1",
+                storageBucket: "chat-app-72bc1.appspot.com",
+                messagingSenderId: "580613664072",
+                appId: "1:580613664072:web:fe583ee5020b058b1fd77d",
+                measurementId: "G-Z908EHYMWB"
+            };
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+            const DB = firebase.database().ref("chats/");
+            var messages = [];
+            DB.on("value", (snapshot) => {
+                snapshot.forEach((child) => {
+                    var message = child.val();
+                    messages.push({
+                        text: message.text,
+                    });
+                })
+                var a = 0;
+                for (var i in messages) {
+                    var h = document.createElement("H3");
+                    var t = document.createTextNode(messages[a].text);
+                    h.appendChild(t);
+                    h.style.color = "deeppink";
+                    document.getElementById('container').appendChild(h);
+                    a = a + 1
+                }
+            })
+            send = () => {
+                const text = document.getElementById("text").value;
+                document.getElementById("text").value = "";
+                firebase
+                    .database()
+                    .ref("chats/")
+                    .push({
+                        text: text,
+                    }).then(() => { location.reload() })
+            }
+        </script>
+        <div class="container">
+            <div class="head"><button class="backbtn"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+
+                width="30" height="38"
+                viewBox="0 0 172 172"
+                style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="50px" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M68.155,45.0425c-0.7525,0.13438 -1.42437,0.51063 -1.935,1.075l-37.5175,37.41l-2.365,2.4725l2.365,2.4725l37.5175,37.41c0.83313,1.02125 2.16344,1.49156 3.45344,1.19594c1.27656,-0.29562 2.28438,-1.30344 2.58,-2.58c0.29563,-1.29 -0.17469,-2.62031 -1.19594,-3.45344l-31.605,-31.605h101.5875c1.23625,0.01344 2.39188,-0.63156 3.02344,-1.70656c0.61813,-1.075 0.61813,-2.39187 0,-3.46687c-0.63156,-1.075 -1.78719,-1.72 -3.02344,-1.70656h-101.5875l31.605,-31.605c1.11531,-1.03469 1.41094,-2.67406 0.73906,-4.03125c-0.65844,-1.37062 -2.15,-2.12312 -3.64156,-1.88125z"></path></g></g></svg></button>
+            <img id="propic"/>
+            </div>
+          <div class="input-send">  
+            <input placeholder="I can send your text." type="text" id="text" />
+            <button class="sendbtn" onclick='send()'></button></div>
+        </div>
+        </div>
+    </div>
+</body>
+
+</html>

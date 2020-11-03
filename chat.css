@@ -1,0 +1,50 @@
+.container{
+    width: 600px;
+    height:700px;
+    background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+    margin-left: 30%;
+}
+.head{
+    height: 60px;
+    width: 600px;
+    position: relative;
+    top:0;
+    position: fixed;
+    background-color: #075e54;
+}
+.backbtn{
+    background: transparent;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 10px;
+    left: 5px;
+
+}
+.backbtn:hover{
+    opacity: 50%;
+}
+.input-send{
+    position: fixed;
+    bottom:60px;
+    left:31%;
+}
+.input-send input{
+    width: 450px;
+    height: 35px;
+    border-radius: 26px;
+    border: none;
+    outline: none;
+    
+   
+}
+#propic{
+    border:1px solid grey;
+    outline: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    position: relative;
+    left: 50px;
+    top: 8px;
+}

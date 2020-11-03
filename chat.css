@@ -1,8 +1,9 @@
 .container{
     width: 600px;
-    height:700px;
+    height:auto;
     background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
     margin-left: 30%;
+    background-attachment: fixed;
 }
 .head{
     height: 60px;
@@ -25,9 +26,9 @@
     opacity: 50%;
 }
 .input-send{
-    position: fixed;
-    bottom:60px;
     left:31%;
+    position: relative;
+    left: 0px;
 }
 .input-send input{
     width: 450px;
@@ -35,16 +36,23 @@
     border-radius: 26px;
     border: none;
     outline: none;
+  
     
    
 }
 #propic{
-    border:1px solid grey;
+    background-image: url("https://i.pinimg.com/originals/44/ce/2c/44ce2cfa6267fde44790205135a78051.jpg");
     outline: none;
-    height: 40px;
-    width: 40px;
+    height: 45px;
+    width: 45px;
     border-radius: 50%;
     position: relative;
     left: 50px;
     top: 8px;
+}
+#chat{
+    width: 100px;
+    height: auto;
+    background-color: whitesmoke;
+    word-break: break-all;
 }

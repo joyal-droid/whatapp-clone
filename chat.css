@@ -1,15 +1,22 @@
-.container{
+body{
     width: 600px;
     height:auto;
+    background-color:#ECE5DD;
+}
+.container{
+    position: relative;
     background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
-    margin-left: 30%;
     background-attachment: fixed;
+    left: 74.6%;
+    border: 0.1px inset rgba(0, 0, 0, 0.315);
+    height: auto;
 }
 .head{
     height: 60px;
     width: 600px;
     position: relative;
     top:0;
+    left: 30%;
     position: fixed;
     background-color: #075e54;
 }
@@ -27,8 +34,8 @@
 }
 .input-send{
     left:31%;
-    position: relative;
-    left: 0px;
+    position: fixed;
+    top: 42rem;
 }
 .input-send input{
     width: 450px;
@@ -43,16 +50,41 @@
 #propic{
     background-image: url("https://i.pinimg.com/originals/44/ce/2c/44ce2cfa6267fde44790205135a78051.jpg");
     outline: none;
-    height: 45px;
-    width: 45px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     position: relative;
     left: 50px;
     top: 8px;
 }
 #chat{
-    width: 100px;
+    width: 8vw;
     height: auto;
-    background-color: whitesmoke;
+    background-color: #ddfac7;
     word-break: break-all;
+    margin-left: 40%;
+    margin-top: 70px;
+    margin-bottom: 80px;
+}
+.sendbtn img{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: -3rem;
+    bottom: 0rem;
+}
+#videocall{
+    position: absolute;
+    top: .8rem;
+    left: 23rem;
+}
+#voicecall{
+    position: absolute;
+    top: .6rem;
+    left: 28rem;
+}
+#dot{
+    position: absolute;
+top: 0.8rem;
+left: 32rem;
 }

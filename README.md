@@ -1,1 +1,1 @@
-# whatapp-clone
+# whatsapp-clone
